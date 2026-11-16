@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Focus Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Focus Desk</h1>
+    <p id="today"></p>
+  </header>
+
+  <main class="layout">
+    <section class="tasks" aria-labelledby="tasks-h">
+      <h2 id="tasks-h">Today’s tasks</h2>
+
+      <form id="add" class="add">
+        <label class="sr" for="text">New task</label>
+        <input id="text" placeholder="What needs doing?" autocomplete="off" required>
+        <label class="sr" for="pri">Priority</label>
+        <select id="pri">
+          <option value="1">High</option>
+          <option value="2" selected>Medium</option>
+          <option value="3">Low</option>
+        </select>
+        <button class="primary" type="submit">Add task</button>
+      </form>
+
+      <div class="progress">
+        <div class="bar"><span id="fill"></span></div>
+        <p id="count">No tasks yet</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter tasks">
+        <button data-f="all" aria-pressed="true">All</button>
+        <button data-f="active" aria-pressed="false">To do</button>
+        <button data-f="done" aria-pressed="false">Done</button>
+        <button id="clear" class="ghost">Clear done</button>
+      </div>
+
+      <ul id="list" class="list"></ul>
+      <p id="empty" class="empty" hidden>Nothing here. Add a task above to get started.</p>
+    </section>
+
+    <aside class="timer" aria-labelledby="timer-h">
+      <h2 id="timer-h" class="sr">Timer</h2>
+      <div class="modes" role="group" aria-label="Timer mode">
+        <button data-m="focus" aria-pressed="true">Focus</button>
+        <button data-m="short" aria-pressed="false">Short break</button>
+        <button data-m="long" aria-pressed="false">Long break</button>
+      </div>
+
+      <div class="dial">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="track" cx="100" cy="100" r="90"/>
+          <circle id="ring" class="ring" cx="100" cy="100" r="90"/>
+        </svg>
+        <div class="readout">
+          <output id="clock">25:00</output>
+          <span id="working">Pick a task to focus on</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="start" class="primary">Start</button>
+        <button id="reset">Reset</button>
+      </div>
+      <p class="sessions"><b id="sessions">0</b> focus sessions today</p>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
